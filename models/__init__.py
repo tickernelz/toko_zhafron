@@ -2,3 +2,4 @@
 
 from . import partner
 from . import panggung
+from . import pelaminan
