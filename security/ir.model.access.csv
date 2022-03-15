@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_toko_dekor,access.toko.dekor,model_toko_dekor,,1,1,1,1
