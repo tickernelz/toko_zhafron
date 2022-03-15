@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "toko_zhafron",
+    'name': "Toko Zhafron",
 
     'summary': """
         Toko Zhafron""",
