@@ -4,3 +4,5 @@ access_toko_partner,access.toko.partner,model_toko_partner,,1,1,1,1
 access_toko_pelaminan,access.toko.pelaminan,model_toko_pelaminan,,1,1,1,1
 access_toko_kursi_pengantin,access.toko.kursi_pengantin,model_toko_kursi_pengantin,,1,1,1,1
 access_toko_kursi_tamu,access.toko.kursi_tamu,model_toko_kursi_tamu,,1,1,1,1
+access_toko_order,access.toko.order,model_toko_order,,1,1,1,1
+access_toko_order_detail,access.toko.order_detail,model_toko_order_detail,,1,1,1,1
