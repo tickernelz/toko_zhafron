@@ -14,8 +14,13 @@ class Order(models.Model):
         string='Order Detail',
         required=False)
     total = fields.Integer(
+        compute='_compute_total',
         string='Total Harga',
         store=True,
+        required=False)
+    tanggal_pesan = fields.Datetime(
+        string='Tanggal Pemesanan',
+        default=fields.Datetime.now(),
         required=False)
 
     @api.depends('order_detail_ids')
@@ -42,7 +47,7 @@ class OrderDetail(models.Model):
         required=False)
     harga = fields.Integer(
         compute='_compute_harga',
-        string='Harga', 
+        string='Harga',
         required=False)
     qty = fields.Integer(
         string='Quantity',
@@ -56,9 +61,17 @@ class OrderDetail(models.Model):
     def _compute_harga_satuan(self):
         for record in self:
             record.harga_satuan = record.panggung_id.harga
-    
+
     @api.depends('qty', 'harga_satuan')
     def _compute_harga(self):
         for record in self:
             record.harga = record.harga_satuan * record.qty
-        
+
+    @api.model
+    def create(self, values):
+        # Add code here
+        record = super(OrderDetail, self).create(values)
+        if record.qty:
+            self.env['toko.panggung'].search([('id', '=', record.panggung_id.id)]).write(
+                {'stok': record.panggung_id.stok - record.qty})
+            return record

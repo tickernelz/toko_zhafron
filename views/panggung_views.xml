@@ -7,10 +7,13 @@
             <field name="arch" type="xml">
                 <tree string="toko_panggung_tree">
                     <field name="name"/>
-                    <field name="bunga"/>
-                    <field name="harga"/>
                     <field name="pelaminan_id"/>
+                    <field name="kursi_pengantin_id"/>
+                    <field name="bunga"/>
                     <field name="accesories"/>
+                    <field name="harga"/>
+                    <field name="stok"/>
+                    <field name="order_detail_ids"/>
                 </tree>
             </field>
         </record>
@@ -24,7 +27,7 @@
                         <group>
                             <field name="name"/>
                             <field name="pelaminan_id"/>
-                            <field name="kursi_id"/>
+                            <field name="kursi_pengantin_id"/>
                         </group>
                         <group>
                             <field name="bunga"/>
@@ -40,6 +43,14 @@
                             </page>
                             <page string="DESKRIPSI KURSI">
                                 <field name="des_kursi"/>
+                            </page>
+                            <page string="ORDER DETAIL">
+                                <field name="order_detail_ids">
+                                    <tree>
+                                        <field name="order_id"/>
+                                        <field name="harga"/>
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
                     </sheet>

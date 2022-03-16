@@ -7,6 +7,7 @@
             <field name="arch" type="xml">
                 <tree string="toko_order_tree">
                     <field name="name"/>
+                    <field name="tanggal_pesan"/>
                     <field name="order_detail_ids"/>
                     <field name="total"/>
                 </tree>

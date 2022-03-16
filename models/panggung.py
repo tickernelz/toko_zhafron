@@ -12,7 +12,7 @@ class Panggung(models.Model):
         comodel_name='toko.pelaminan',
         string='Tipe Pelaminan',
         required=True)
-    kursi_id = fields.Many2one(
+    kursi_pengantin_id = fields.Many2one(
         comodel_name='toko.kursi_pengantin',
         string='Kursi Pengantin',
         required=False)
@@ -38,21 +38,23 @@ class Panggung(models.Model):
         compute='_compute_des_kursi',
         string='Deskripsi Kursi',
         required=False)
+    order_detail_ids = fields.One2many(
+        comodel_name='toko.order_detail',
+        inverse_name='panggung_id',
+        string='Order Detail',
+        required=False)
 
-    @api.depends('pelaminan_id', 'kursi_id')
+    @api.depends('pelaminan_id', 'kursi_pengantin_id')
     def _compute_harga(self):
         for record in self:
-            record.harga = record.pelaminan_id.harga + record.kursi_id.harga
+            record.harga = record.pelaminan_id.harga + record.kursi_pengantin_id.harga
 
     @api.depends('pelaminan_id')
     def _compute_des_pelaminan(self):
         for record in self:
             record.des_pelaminan = record.pelaminan_id.deskripsi
 
-    @api.depends('kursi_id')
+    @api.depends('kursi_pengantin_id')
     def _compute_des_kursi(self):
         for record in self:
-            record.des_kursi = record.kursi_id.deskripsi
-
-
-
+            record.des_kursi = record.kursi_pengantin_id.deskripsi
