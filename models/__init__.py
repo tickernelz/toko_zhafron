@@ -6,4 +6,3 @@ from . import pelaminan
 from . import kursi_pengantin
 from . import kursi_tamu
 from . import order
-from . import order_kursi_tamu

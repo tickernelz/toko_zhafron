@@ -38,11 +38,11 @@ class Panggung(models.Model):
         compute='_compute_des_kursi',
         string='Deskripsi Kursi',
         required=False)
-    order_detail_ids = fields.One2many(
-        comodel_name='toko.order_detail',
-        inverse_name='panggung_id',
-        string='Order Detail',
-        required=False)
+    # order_detail_ids = fields.One2many(
+    #     comodel_name='toko.order_detail_panggung',
+    #     inverse_name='panggung_id',
+    #     string='Order Detail',
+    #     required=False)
 
     @api.depends('pelaminan_id', 'kursi_pengantin_id')
     def _compute_harga(self):
