@@ -9,9 +9,41 @@
                     <field name="name"/>
                     <field name="bunga"/>
                     <field name="harga"/>
-                    <field name="pelaminan"/>
+                    <field name="pelaminan_id"/>
                     <field name="accesories"/>
                 </tree>
+            </field>
+        </record>
+
+        <record id="toko_panggung_view_form" model="ir.ui.view">
+            <field name="name">Panggung</field>
+            <field name="model">toko.panggung</field>
+            <field name="arch" type="xml">
+                <form string="toko_panggung_form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="pelaminan_id"/>
+                            <field name="kursi_id"/>
+                        </group>
+                        <group>
+                            <field name="bunga"/>
+                            <field name="accesories"/>
+                            <field name="stok"/>
+                        </group>
+                        <group>
+                            <field name="harga"/>
+                        </group>
+                        <notebook>
+                            <page string="DESKRIPSI PELAMINAN">
+                                <field name="des_pelaminan"/>
+                            </page>
+                            <page string="DESKRIPSI KURSI">
+                                <field name="des_kursi"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
             </field>
         </record>
         

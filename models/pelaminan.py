@@ -6,7 +6,7 @@ class Pelaminan(models.Model):
     _description = 'Pelaminan'
 
     name = fields.Char(
-        string='Name')
+        string='Nama Pelaminan')
     deskripsi = fields.Char(
         string='Deskripsi Pelaminan',
         required=False)

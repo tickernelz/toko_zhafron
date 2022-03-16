@@ -2,3 +2,5 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_toko_panggung,access.toko.panggung,model_toko_panggung,,1,1,1,1
 access_toko_partner,access.toko.partner,model_toko_partner,,1,1,1,1
 access_toko_pelaminan,access.toko.pelaminan,model_toko_pelaminan,,1,1,1,1
+access_toko_kursi_pengantin,access.toko.kursi_pengantin,model_toko_kursi_pengantin,,1,1,1,1
+access_toko_kursi_tamu,access.toko.kursi_tamu,model_toko_kursi_tamu,,1,1,1,1

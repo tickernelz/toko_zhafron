@@ -7,28 +7,52 @@ class Panggung(models.Model):
 
     name = fields.Char(
         string='Nama Panggung',
-        required=True,)
-    pelaminan = fields.Many2one(
+        required=True)
+    pelaminan_id = fields.Many2one(
         comodel_name='toko.pelaminan',
         string='Tipe Pelaminan',
-        domain="[('harga', '>', '0')]",
+        required=True)
+    kursi_id = fields.Many2one(
+        comodel_name='toko.kursi_pengantin',
+        string='Kursi Pengantin',
         required=False)
     accesories = fields.Char(
         string='Accesories Pelaminan',
-        required=False)
+        required=True)
     bunga = fields.Selection(
         string='Tipe Bunga',
-        required=False,
+        required=True,
         selection=[('bunga mati', 'Bunga Mati'), ('bunga hidup', 'Bunga Hidup')])
-    harga = fields.Char(
+    harga = fields.Integer(
         compute='_compute_harga',
         string='Harga Sewa',
+        required=True)
+    stok = fields.Integer(
+        string='Stok Paket Panggung',
+        required=False)
+    des_pelaminan = fields.Char(
+        compute='_compute_des_pelaminan',
+        string='Deskripsi Pelaminan',
+        required=False)
+    des_kursi = fields.Char(
+        compute='_compute_des_kursi',
+        string='Deskripsi Kursi',
         required=False)
 
-    @api.depends('pelaminan')
+    @api.depends('pelaminan_id', 'kursi_id')
     def _compute_harga(self):
         for record in self:
-            record.harga = record.pelaminan.harga
+            record.harga = record.pelaminan_id.harga + record.kursi_id.harga
+
+    @api.depends('pelaminan_id')
+    def _compute_des_pelaminan(self):
+        for record in self:
+            record.des_pelaminan = record.pelaminan_id.deskripsi
+
+    @api.depends('kursi_id')
+    def _compute_des_kursi(self):
+        for record in self:
+            record.des_kursi = record.kursi_id.deskripsi
 
 
 

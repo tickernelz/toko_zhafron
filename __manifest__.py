@@ -27,7 +27,9 @@
         'security/ir.model.access.csv',
         'views/menu.xml',
         'views/panggung_views.xml',
-        'views/pelaminan_views.xml'
+        'views/pelaminan_views.xml',
+        'views/kursi_pengantin_views.xml',
+        'views/kursi_tamu_views.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
