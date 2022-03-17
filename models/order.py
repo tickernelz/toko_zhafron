@@ -1,4 +1,5 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, _
+from odoo.exceptions import ValidationError
 
 
 class Order(models.Model):
@@ -30,6 +31,11 @@ class Order(models.Model):
     tanggal_pengiriman = fields.Date(
         string='Tanggal Pengiriman',
         default=fields.Date.today(),
+        required=False)
+    pemesan = fields.Many2one(
+        comodel_name='res.partner',
+        string='Pemesan',
+        domain=[('is_pelanggan', '=', True)],
         required=False)
 
     @api.depends('order_detail_panggung_ids', 'order_detail_kursi_tamu_ids')
@@ -70,6 +76,13 @@ class OrderDetailPanggung(models.Model):
     def _compute_harga_satuan(self):
         for record in self:
             record.harga_satuan = record.panggung_id.harga
+
+    @api.constrains('qty')
+    def _check_stok(self):
+        for record in self:
+            bahan = self.env['toko.panggung'].search([('stok', '<', record.qty), ('id', '=', record.panggung_id.id)])
+            if bahan:
+                raise ValidationError('Stok %s tidak mencukupi' % record.panggung_id.name)
 
     @api.depends('qty', 'harga_satuan')
     def _compute_harga(self):
@@ -114,6 +127,13 @@ class OrderDetailKursiTamu(models.Model):
     def _compute_harga_satuan(self):
         for record in self:
             record.harga_satuan = record.kursi_tamu_id.harga
+
+    @api.constrains('qty')
+    def _check_stok(self):
+        for record in self:
+            bahan = self.env['toko.kursi_tamu'].search([('stok', '<', record.qty), ('id', '=', record.kursi_tamu_id.id)])
+            if bahan:
+                raise ValidationError('Stok %s tidak mencukupi' % record.kursi_tamu_id.name)
 
     @api.depends('qty', 'harga_satuan')
     def _compute_harga(self):
