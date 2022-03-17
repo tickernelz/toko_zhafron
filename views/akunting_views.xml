@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="toko_akunting_view_tree" model="ir.ui.view">
+            <field name="name">Akunting Toko</field>
+            <field name="model">toko.akunting</field>
+            <field name="arch" type="xml">
+                <tree string="toko_akunting_tree">
+                    <field name="name"/>
+                    <field name="tanggal"/>
+                    <field name="debet"/>
+                    <field name="kredit"/>
+                    <field name="saldo"/>
+                </tree>
+            </field>
+        </record>
+        <!-- model.name action window -->
+        <record id="toko_akunting_action" model="ir.actions.act_window">
+            <field name="name">Akunting Toko</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">toko.akunting</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="toko_akunting_menu_act" name="Akunting" parent="toko_menu_root" action="toko_akunting_action" sequence="14"/>
+    </data>
+</odoo>
