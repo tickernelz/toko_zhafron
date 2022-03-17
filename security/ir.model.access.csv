@@ -7,3 +7,4 @@ access_toko_kursi_tamu,access.toko.kursi_tamu,model_toko_kursi_tamu,,1,1,1,1
 access_toko_order,access.toko.order,model_toko_order,,1,1,1,1
 access_toko_order_detail_panggung,access.toko.order_detail_panggung,model_toko_order_detail_panggung,,1,1,1,1
 access_toko_order_detail_kursi_tamu,access.toko.order_detail_kursi_tamu,model_toko_order_detail_kursi_tamu,,1,1,1,1
+access_toko_pengembalian,access.toko.pengembalian,model_toko_pengembalian,,1,1,1,1

@@ -6,6 +6,9 @@
             <field name="model">toko.order</field>
             <field name="arch" type="xml">
                 <tree string="toko_order_tree">
+                    <header>
+                        <button name="kembali_barang" string="Kembali Barang" class="btn btn-success" states="" type="object"/>
+                    </header>
                     <field name="name"/>
                     <field name="pemesan"/>
                     <field name="tanggal_pesan"/>
@@ -13,6 +16,7 @@
                     <field name="order_detail_panggung_ids"/>
                     <field name="order_detail_kursi_tamu_ids"/>
                     <field name="total"/>
+                    <field name="sudah_kembali"/>
                 </tree>
             </field>
         </record>
@@ -29,6 +33,7 @@
                             <field name="tanggal_pesan"/>
                             <field name="tanggal_pengiriman"/>
                             <field name="total"/>
+                            <field name="sudah_kembali"/>
                         </group>
                         <notebook>
                             <page name="panggung" string="Panggung">
@@ -63,9 +68,10 @@
             <field name="res_model">toko.order</field>
             <field name="view_mode">tree,form</field>
         </record>
-        <menuitem id="toko_order_menu_categ" name="Order" parent="toko_menu_root" action="toko_order_action" sequence="11"/>
+        <menuitem id="toko_order_menu_categ" name="Order" parent="toko_menu_root" action="toko_order_action"
+                  sequence="11"/>
         <!-- This Menu Item must have a parent and an action -->
-<!--        <menuitem id="toko_order_menu_act" name="Order Panggung" parent="toko_order_menu_categ" action="toko_order_action"-->
-<!--                  sequence="10"/>-->
+        <!--        <menuitem id="toko_order_menu_act" name="Order Panggung" parent="toko_order_menu_categ" action="toko_order_action"-->
+        <!--                  sequence="10"/>-->
     </data>
 </odoo>

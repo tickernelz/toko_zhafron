@@ -37,6 +37,9 @@ class Order(models.Model):
         string='Pemesan',
         domain=[('is_pelanggan', '=', True)],
         required=False)
+    sudah_kembali = fields.Boolean(
+        string='Sudah Dikembalikan',
+        required=False)
 
     @api.depends('order_detail_panggung_ids', 'order_detail_kursi_tamu_ids')
     def _compute_total(self):
@@ -46,6 +49,9 @@ class Order(models.Model):
             search_harga_kursi_tamu = sum(
                 self.env['toko.order_detail_kursi_tamu'].search([('name', '=', record.id)]).mapped('harga'))
             record.total = search_harga_panggung + search_harga_kursi_tamu
+
+    def kembali_barang(self):
+        pass
 
 
 class OrderDetailPanggung(models.Model):

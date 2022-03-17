@@ -33,7 +33,8 @@
         'views/order_views.xml',
         'views/res_partner_inherit_views.xml',
         'views/pegawai_views.xml',
-        'views/pelanggan_views.xml'
+        'views/pelanggan_views.xml',
+        'views/pengembalian_views.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
