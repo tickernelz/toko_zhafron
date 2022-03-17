@@ -22,7 +22,7 @@
         </record>
         
         <!-- This Menu Item Must have a parent -->
-        <menuitem id="toko_pengembalian_menu_categ" name="Pengembalian Bareng" parent="toko_menu_root" action="toko_pengembalian_action" sequence="12"/>
+        <menuitem id="toko_pengembalian_menu_categ" name="Pengembalian Barang" parent="toko_menu_root" action="toko_pengembalian_action" sequence="12"/>
 
     </data>
 </odoo>
