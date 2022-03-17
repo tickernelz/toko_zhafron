@@ -16,7 +16,7 @@ class Pengembalian(models.Model):
         compute='_compute_penyewa',
         string='Nama Penyewa',
         required=False)
-    tagihan = fields.Char(
+    tagihan = fields.Integer(
         compute='_compute_tagihan',
         string='Tagihan',
         required=False)
@@ -39,3 +39,8 @@ class Pengembalian(models.Model):
             self.env['toko.order'].search([('id', '=', record.name.id)]).write(
                 {'sudah_kembali': True})
             return record
+
+    def unlink(self):
+        for zhafron in self:
+            self.env['toko.order'].search([('id', '=', zhafron.name.id)]).write({'sudah_kembali': False})
+        record = super(Pengembalian, self).unlink()
