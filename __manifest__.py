@@ -34,7 +34,9 @@
         'views/res_partner_inherit_views.xml',
         'views/pegawai_views.xml',
         'views/pelanggan_views.xml',
-        'views/pengembalian_views.xml'
+        'views/pengembalian_views.xml',
+        'report/report.xml',
+        'report/order_report.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
